@@ -24,11 +24,11 @@
     <!-- Inline Critical CSS -->
     <style>
         :root {
-            --primary-color: #006494; /* أزرق داكن محسن للتباين */
-            --primary-light: #0582ca; /* أزرق متوسط محسن للتباين */
-            --secondary-color: #e8f1f2; /* أزرق فاتح جداً محسن للتباين */
-            --accent-color: #ff9500; /* لون برتقالي ذهبي مع تباين أعلى */
-            --text-dark: #1A1A1A;
+            --primary-color: #0077B6; /* أزرق سماوي غامق */
+            --primary-light: #00B4D8; /* أزرق سماوي متوسط */
+            --secondary-color: #CAF0F8; /* سماوي فاتح للخلفية */
+            --accent-color: #FF9E00; /* لون برتقالي ذهبي مع تباين عالي */
+            --text-dark: #1A1A1A; /* أسود داكن مع تباين 7:1 على السماوي الفاتح */
             --text-light: #FFFFFF;
             --whatsapp-color: #25D366;
             --whatsapp-dark: #128C7E;
@@ -48,20 +48,11 @@
         }
         
         body {
-            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Tajawal', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             color: var(--text-dark);
             line-height: 1.6;
             overflow-x: hidden;
             background-color: var(--secondary-color);
-        }
-        
-        /* Fallback font until Tajawal loads */
-        @font-face {
-            font-family: 'Tajawal';
-            font-style: normal;
-            font-weight: 400;
-            font-display: swap;
-            src: local('Tajawal'), local('Tajawal-Regular');
         }
         
         /* Header Styles */
@@ -116,7 +107,7 @@
             padding: 0.5rem 1rem;
             border-radius: 30px;
             transition: var(--transition);
-            border: 2px solid transparent;
+            border: 2px solid rgba(255, 255, 255, 0.3);
             background-color: rgba(255, 255, 255, 0.1);
         }
         
@@ -155,7 +146,7 @@
         .hero h2 {
             font-size: 1.8rem;
             margin-bottom: 1.5rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
             color: var(--white);
         }
         
@@ -234,10 +225,10 @@
         
         .service-list li {
             padding: 0.7rem 0;
-            border-bottom: 1px dashed #eee;
+            border-bottom: 1px dashed #e0e0e0;
             display: flex;
             align-items: center;
-            font-weight: 500;
+            font-weight: 600; /* زيادة سماكة الخط لتحسين التباين */
             color: var(--text-dark);
         }
         
@@ -267,6 +258,7 @@
             color: var(--primary-color);
             font-size: 1.8rem;
             margin-bottom: 1.5rem;
+            font-weight: 700;
         }
         
         .contact-methods {
@@ -278,19 +270,19 @@
         }
         
         .contact-card {
-            background: rgba(0, 100, 148, 0.1);
+            background: rgba(0, 180, 216, 0.1);
             padding: 1.2rem;
             border-radius: var(--border-radius);
             width: 100%;
             max-width: 250px;
             transition: var(--transition);
-            border: 1px solid var(--primary-color);
+            border: 1px solid var(--primary-light);
         }
         
         .contact-card:hover {
             transform: translateY(-3px);
             box-shadow: var(--shadow-md);
-            background: rgba(0, 100, 148, 0.2);
+            background: rgba(0, 180, 216, 0.2);
         }
         
         .contact-card i {
@@ -303,14 +295,17 @@
             margin-bottom: 0.5rem;
             color: var(--primary-color);
             font-size: 1.2rem;
+            font-weight: 700;
         }
         
         .contact-card p, .contact-card a {
             color: var(--text-dark);
+            font-weight: 500;
         }
         
         .contact-card a:hover {
             color: var(--primary-color);
+            text-decoration: underline;
         }
         
         .whatsapp-btn {
@@ -368,6 +363,7 @@
             color: var(--accent-color);
             position: relative;
             display: inline-block;
+            font-weight: 700;
         }
         
         .footer-section h3::after {
@@ -386,11 +382,13 @@
             display: block;
             text-decoration: none;
             transition: var(--transition);
+            font-weight: 500;
         }
         
         .footer-section a:hover, .footer-section a:focus {
             color: var(--accent-color);
             padding-right: 5px;
+            text-decoration: underline;
         }
         
         .social-icons {
@@ -417,6 +415,7 @@
             background: var(--accent-color);
             transform: translateY(-3px);
             border-color: var(--white);
+            color: var(--primary-color);
         }
         
         .copyright {
@@ -424,7 +423,8 @@
             padding-top: 1.5rem;
             border-top: 1px solid rgba(255, 255, 255, 0.2);
             font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 500;
         }
         
         /* Back to Top Button */
@@ -474,6 +474,7 @@
             z-index: 100;
             transition: top 0.3s;
             border: 2px solid var(--accent-color);
+            font-weight: 700;
         }
         
         .skip-link:focus {
