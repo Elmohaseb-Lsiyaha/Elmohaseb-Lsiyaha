@@ -17,17 +17,15 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://elmohaseb-lsiyaha.netlify.app" />
     
-    <!-- Preload important resources -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" as="style">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" as="style">
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" as="style">
     <link rel="preload" href="https://images.unsplash.com/photo-1518639192441-8fce0a366e2e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" as="image">
     
     <!-- Fonts & Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     
+    <!-- Inline Critical CSS -->
     <style>
         :root {
             --primary-color: #002b5c;
@@ -45,6 +43,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            transition: var(--transition);
         }
         
         body {
@@ -77,7 +76,6 @@
             font-weight: 900;
             margin-bottom: 0.5rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            color: var(--white);
         }
         
         .company-name-en {
@@ -86,14 +84,9 @@
             display: block;
             opacity: 0.9;
             letter-spacing: 1px;
-            color: var(--white);
         }
         
         /* Navigation */
-        nav {
-            margin-top: 1.5rem;
-        }
-        
         nav ul {
             list-style: none;
             display: flex;
@@ -109,7 +102,6 @@
             font-weight: 700;
             padding: 0.5rem 1rem;
             border-radius: 30px;
-            transition: var(--transition);
             position: relative;
         }
         
@@ -121,7 +113,6 @@
             background: var(--accent-color);
             bottom: 0;
             right: 0;
-            transition: var(--transition);
         }
         
         nav ul li a:hover, nav ul li a:focus {
@@ -161,14 +152,12 @@
             font-size: 2.5rem;
             margin-bottom: 1.5rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            color: var(--white);
         }
         
         .hero p {
             font-size: 1.2rem;
             max-width: 800px;
             margin: 0 auto 2rem;
-            color: var(--white);
         }
         
         /* Services Section */
@@ -191,7 +180,6 @@
             border-radius: 10px;
             padding: 2rem;
             box-shadow: var(--shadow);
-            transition: var(--transition);
             border-top: 4px solid var(--accent-color);
             position: relative;
             overflow: hidden;
@@ -273,7 +261,6 @@
             padding: 1.5rem;
             border-radius: 8px;
             width: 250px;
-            transition: var(--transition);
         }
         
         .contact-card:hover {
@@ -304,7 +291,6 @@
             font-weight: 700;
             text-decoration: none;
             margin: 2rem auto 0;
-            transition: var(--transition);
             box-shadow: 0 4px 15px rgba(18, 140, 126, 0.3);
             border: 2px solid transparent;
         }
@@ -351,7 +337,6 @@
             margin-bottom: 0.5rem;
             display: block;
             text-decoration: none;
-            transition: var(--transition);
         }
         
         .footer-section a:hover, .footer-section a:focus {
@@ -375,7 +360,6 @@
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             color: var(--white);
-            transition: var(--transition);
         }
         
         .social-icons a:hover, .social-icons a:focus {
@@ -388,7 +372,6 @@
             margin-top: 2rem;
             padding-top: 1.5rem;
             border-top: 1px solid rgba(255, 255, 255, 0.2);
-            color: var(--white);
         }
         
         /* Back to Top Button */
@@ -408,7 +391,6 @@
             cursor: pointer;
             opacity: 0;
             visibility: hidden;
-            transition: var(--transition);
             z-index: 99;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
             border: none;
@@ -439,6 +421,12 @@
         
         .skip-link:focus {
             top: 0;
+        }
+        
+        /* Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
         }
         
         /* Responsive Design */
@@ -500,20 +488,6 @@
                 justify-content: center;
             }
         }
-        
-        /* Animation */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .fade-in {
-            animation: fadeIn 0.8s ease forwards;
-        }
-        
-        .delay-1 { animation-delay: 0.2s; }
-        .delay-2 { animation-delay: 0.4s; }
-        .delay-3 { animation-delay: 0.6s; }
     </style>
 </head>
 <body>
@@ -522,13 +496,13 @@
     <header>
         <div class="header-content">
             <h1 class="company-name fade-in">المحاسب للسياحة</h1>
-            <span class="company-name-en fade-in delay-1">Elmohaseb Lsiyaha</span>
+            <span class="company-name-en fade-in">Elmohaseb Lsiyaha</span>
             <nav aria-label="القائمة الرئيسية">
                 <ul>
-                    <li><a href="#services" class="fade-in delay-1" aria-label="الانتقال إلى قسم الخدمات">الخدمات</a></li>
-                    <li><a href="#home" class="fade-in delay-1" aria-label="الانتقال إلى الصفحة الرئيسية">الرئيسية</a></li>
-                    <li><a href="#about" class="fade-in delay-2" aria-label="الانتقال إلى قسم من نحن">من نحن</a></li>
-                    <li><a href="#contact" class="fade-in delay-2" aria-label="الانتقال إلى قسم اتصل بنا">اتصل بنا</a></li>
+                    <li><a href="#services" class="fade-in" aria-label="الانتقال إلى قسم الخدمات">الخدمات</a></li>
+                    <li><a href="#home" class="fade-in" aria-label="الانتقال إلى الصفحة الرئيسية">الرئيسية</a></li>
+                    <li><a href="#about" class="fade-in" aria-label="الانتقال إلى قسم من نحن">من نحن</a></li>
+                    <li><a href="#contact" class="fade-in" aria-label="الانتقال إلى قسم اتصل بنا">اتصل بنا</a></li>
                 </ul>
             </nav>
         </div>
@@ -538,7 +512,7 @@
         <section id="home" class="hero fade-in" aria-labelledby="hero-heading">
             <h2 id="hero-heading">رحلاتك المميزة تبدأ معنا</h2>
             <p>نقدم أفضل خدمات الحج والعمرة وتأشيرات السعودية بأسعار تنافسية وجودة عالية، مع فريق محترف لضمان رحلتك المثالية</p>
-            <a href="https://wa.me/message/FIW5CFX2HH2HF1" class="whatsapp-btn fade-in delay-2" target="_blank" aria-label="تواصل معنا عبر واتساب">
+            <a href="https://wa.me/message/FIW5CFX2HH2HF1" class="whatsapp-btn fade-in" target="_blank" aria-label="تواصل معنا عبر واتساب">
                 <i class="fab fa-whatsapp"></i> احجز رحلتك الآن
             </a>
         </section>
@@ -546,7 +520,7 @@
         <section id="services" aria-labelledby="services-heading">
             <h2 id="services-heading" class="section-title fade-in">خدماتنا المتميزة</h2>
             <div class="services-grid">
-                <div class="service-box fade-in delay-1" aria-labelledby="hajj-heading">
+                <div class="service-box fade-in" aria-labelledby="hajj-heading">
                     <h2 id="hajj-heading">برامج الحج والعمرة</h2>
                     <ul class="service-list">
                         <li><i class="fas fa-kaaba" aria-hidden="true"></i> تنظيم برامج الحج والعمرة الكاملة</li>
@@ -558,7 +532,7 @@
                     </ul>
                 </div>
 
-                <div class="service-box fade-in delay-2" aria-labelledby="visa-heading">
+                <div class="service-box fade-in" aria-labelledby="visa-heading">
                     <h2 id="visa-heading">تأشيرات السعودية</h2>
                     <ul class="service-list">
                         <li><i class="fas fa-calendar-check" aria-hidden="true"></i> حجز موعد تأشيرة VFS</li>
@@ -571,7 +545,7 @@
                     </ul>
                 </div>
                 
-                <div class="service-box fade-in delay-3" aria-labelledby="other-services-heading">
+                <div class="service-box fade-in" aria-labelledby="other-services-heading">
                     <h2 id="other-services-heading">خدمات سياحية أخرى</h2>
                     <ul class="service-list">
                         <li><i class="fas fa-plane" aria-hidden="true"></i> حجز تذاكر الطيران</li>
@@ -585,7 +559,7 @@
             </div>
         </section>
         
-        <section id="about" class="fade-in delay-2" aria-labelledby="about-heading">
+        <section id="about" class="fade-in" aria-labelledby="about-heading">
             <div class="service-box">
                 <h2 id="about-heading">من نحن</h2>
                 <p>شركة المحاسب للسياحة هي وكالة سفر معتمدة متخصصة في تقديم خدمات الحج والعمرة وتأشيرات المملكة العربية السعودية. نحن نتميز بخبرة طويلة في مجال السياحة الدينية والسفر، مع فريق عمل محترف يضمن لكم رحلة مميزة بكل سهولة ويسر.</p>
@@ -593,7 +567,7 @@
             </div>
         </section>
         
-        <section id="contact" class="contact-section fade-in delay-3" aria-labelledby="contact-heading">
+        <section id="contact" class="contact-section fade-in" aria-labelledby="contact-heading">
             <h2 id="contact-heading">تواصل معنا</h2>
             <p>نحن هنا لمساعدتك في كل استفساراتك واحتياجاتك المتعلقة بالسفر والسياحة</p>
             
@@ -656,6 +630,10 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
+    <!-- Load non-critical CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" media="print" onload="this.media='all'">
+    
+    <!-- JavaScript -->
     <script>
         // Update copyright year automatically
         document.getElementById('year').textContent = new Date().getFullYear();
