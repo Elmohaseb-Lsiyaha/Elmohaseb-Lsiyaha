@@ -16,27 +16,26 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://elmohaseb-lsiyaha.netlify.app" />
     
-    <!-- Preconnect to external domains -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@700;800;900&display=swap" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" as="style">
     
-    <!-- Inline Critical CSS -->
+    <!-- Inline Critical CSS with CLS improvements -->
     <style>
         :root {
-            --primary-color: #0077B6; /* أزرق سماوي متوسط */
-            --primary-light: #00B4D8; /* أزرق سماوي فاتح */
-            --secondary-color: #F5FDFF; /* سماوي فاتح جداً للخلفية */
-            --accent-color: #FF9E00; /* لون برتقالي ذهبي مع تباين عالي */
-            --text-dark: #111111; /* أسود داكن مع تباين عالي */
+            --primary-color: #006494; /* أزرق داكن قليلاً لمزيد من التباين */
+            --primary-light: #0582CA; /* أزرق متوسط */
+            --secondary-color: #F8FDFF; /* سماوي فاتح جداً للخلفية */
+            --accent-color: #FF9100; /* لون برتقالي ذهبي أكثر إشراقًا */
+            --text-dark: #0A0A0A; /* أسود داكن جداً مع تباين عالي */
             --text-light: #FFFFFF;
-            --whatsapp-color: #128C7E; /* واتساب أخضر غامق */
-            --whatsapp-dark: #075E54; /* واتساب أخضر أغمق */
+            --whatsapp-color: #128C7E;
+            --whatsapp-dark: #075E54;
             --white: #FFFFFF;
             --black: #000000;
-            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
             --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.15);
-            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.2);
+            --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.2);
             --border-radius: 8px;
             --transition: all 0.3s ease;
         }
@@ -47,16 +46,42 @@
             box-sizing: border-box;
         }
         
+        /* Base Typography with CLS prevention */
         body {
             font-family: 'Tajawal', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             color: var(--text-dark);
-            line-height: 1.7; /* زيادة تباعد الأسطر */
+            line-height: 1.7;
             overflow-x: hidden;
             background-color: var(--secondary-color);
-            font-weight: 700; /* زيادة سمك الخط العام */
+            font-weight: 700;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
         }
         
-        /* Header Styles */
+        h1, h2, h3, h4 {
+            font-weight: 900;
+            line-height: 1.3;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            font-weight: 700;
+        }
+        
+        /* Layout with CLS prevention */
+        img, svg, video, iframe {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Header with reserved space */
         header {
             background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
             color: var(--text-light);
@@ -66,6 +91,7 @@
             box-shadow: var(--shadow-md);
             z-index: 100;
             border-bottom: 4px solid var(--accent-color);
+            min-height: 180px; /* Reserve space to prevent CLS */
         }
         
         .header-content {
@@ -75,7 +101,7 @@
         }
         
         .company-name {
-            font-size: 2.2rem;
+            font-size: clamp(1.8rem, 5vw, 2.8rem); /* Fluid typography */
             font-weight: 900;
             margin-bottom: 0.5rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
@@ -84,14 +110,18 @@
         }
         
         .company-name-en {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 3vw, 1.5rem);
             font-weight: 800;
             display: block;
             opacity: 0.95;
             color: var(--white);
         }
         
-        /* Navigation */
+        /* Navigation with reserved space */
+        nav {
+            min-height: 60px; /* Reserve space */
+        }
+        
         nav ul {
             list-style: none;
             display: flex;
@@ -103,30 +133,29 @@
         
         nav ul li a {
             color: var(--text-light);
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: 800; /* زيادة سمك خط القوائم */
-            padding: 0.5rem 1rem;
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
+            font-weight: 800;
+            padding: 0.6rem 1.2rem;
             border-radius: 30px;
             transition: var(--transition);
             border: 2px solid rgba(255, 255, 255, 0.4);
             background-color: rgba(255, 255, 255, 0.15);
         }
         
-        nav ul li a:hover, nav ul li a:focus {
+        nav ul li a:hover {
             color: var(--accent-color);
             border-color: var(--accent-color);
             background-color: rgba(255, 255, 255, 0.25);
         }
         
-        /* Main Content */
+        /* Main Content with reserved space */
         main {
             max-width: 1200px;
             margin: 2rem auto;
             padding: 0 1rem;
         }
         
-        /* Hero Section */
+        /* Hero Section with CLS prevention */
         .hero {
             background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
             color: var(--text-light);
@@ -138,40 +167,44 @@
             overflow: hidden;
             box-shadow: var(--shadow-md);
             border: 3px solid var(--accent-color);
+            min-height: 300px; /* Reserve space */
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .hero-content {
             position: relative;
             z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
         }
         
         .hero h2 {
-            font-size: 1.8rem;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
             margin-bottom: 1.5rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
             color: var(--white);
-            font-weight: 900; /* زيادة سمك الخط */
-            line-height: 1.3;
+            font-weight: 900;
         }
         
         .hero p {
-            font-size: 1.1rem;
-            max-width: 800px;
-            margin: 0 auto 2rem;
+            font-size: clamp(1rem, 3vw, 1.2rem);
             color: rgba(255, 255, 255, 0.95);
             font-weight: 700;
             line-height: 1.8;
+            margin-bottom: 2rem;
         }
         
-        /* Services Section */
+        /* Services Section with grid reservation */
         .section-title {
-            font-size: 2rem;
+            font-size: clamp(1.8rem, 5vw, 2.2rem);
             text-align: center;
             margin-bottom: 2rem;
             color: var(--primary-color);
             position: relative;
             padding-bottom: 0.5rem;
-            font-weight: 900; /* زيادة سمك الخط */
+            font-weight: 900;
         }
         
         .section-title::after {
@@ -181,7 +214,7 @@
             right: 50%;
             transform: translateX(50%);
             width: 100px;
-            height: 5px; /* زيادة سمك الخط */
+            height: 5px;
             background-color: var(--accent-color);
         }
         
@@ -195,12 +228,13 @@
         .service-box {
             background: var(--white);
             border-radius: var(--border-radius);
-            padding: 1.5rem;
+            padding: 1.8rem;
             box-shadow: var(--shadow-sm);
             border-top: 5px solid var(--primary-color);
             transition: var(--transition);
             position: relative;
             overflow: hidden;
+            min-height: 450px; /* Reserve space */
         }
         
         .service-box::before {
@@ -221,10 +255,10 @@
         .service-box h2 {
             color: var(--primary-color);
             font-size: 1.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
             padding-bottom: 0.5rem;
             border-bottom: 3px solid var(--accent-color);
-            font-weight: 900; /* زيادة سمك الخط */
+            font-weight: 900;
         }
         
         .service-list {
@@ -232,12 +266,13 @@
         }
         
         .service-list li {
-            padding: 0.7rem 0;
+            padding: 0.8rem 0;
             border-bottom: 2px dashed #e0e0e0;
             display: flex;
             align-items: center;
-            font-weight: 700; /* زيادة سمك الخط */
+            font-weight: 700;
             color: var(--text-dark);
+            font-size: 1rem;
         }
         
         .service-list li:last-child {
@@ -252,22 +287,23 @@
             font-weight: 900;
         }
         
-        /* Contact Section */
+        /* Contact Section with reserved space */
         .contact-section {
             background: var(--white);
             border-radius: var(--border-radius);
-            padding: 2rem;
+            padding: 2.5rem;
             margin: 2rem 0;
             box-shadow: var(--shadow-sm);
             text-align: center;
             border: 2px solid var(--primary-color);
+            min-height: 400px; /* Reserve space */
         }
         
         .contact-section h2 {
             color: var(--primary-color);
-            font-size: 1.8rem;
+            font-size: clamp(1.8rem, 5vw, 2.2rem);
             margin-bottom: 1.5rem;
-            font-weight: 900; /* زيادة سمك الخط */
+            font-weight: 900;
         }
         
         .contact-methods {
@@ -279,38 +315,40 @@
         }
         
         .contact-card {
-            background: rgba(0, 180, 216, 0.1);
-            padding: 1.2rem;
+            background: rgba(5, 130, 202, 0.1);
+            padding: 1.5rem;
             border-radius: var(--border-radius);
             width: 100%;
-            max-width: 250px;
+            max-width: 280px;
             transition: var(--transition);
             border: 2px solid var(--primary-light);
+            min-height: 180px; /* Reserve space */
         }
         
         .contact-card:hover {
             transform: translateY(-3px);
             box-shadow: var(--shadow-md);
-            background: rgba(0, 180, 216, 0.2);
+            background: rgba(5, 130, 202, 0.2);
         }
         
         .contact-card i {
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: var(--primary-color);
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
             font-weight: 900;
         }
         
         .contact-card h3 {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
             color: var(--primary-color);
-            font-size: 1.2rem;
-            font-weight: 900; /* زيادة سمك الخط */
+            font-size: 1.3rem;
+            font-weight: 900;
         }
         
         .contact-card p, .contact-card a {
             color: var(--text-dark);
-            font-weight: 700; /* زيادة سمك الخط */
+            font-weight: 700;
+            font-size: 1rem;
         }
         
         .contact-card a:hover {
@@ -318,24 +356,26 @@
             text-decoration: underline;
         }
         
+        /* WhatsApp Button with reserved space */
         .whatsapp-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             background: var(--whatsapp-color);
             color: var(--white);
-            padding: 0.8rem 1.5rem;
+            padding: 1rem 2rem;
             border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 900; /* زيادة سمك الخط */
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            font-weight: 900;
             text-decoration: none;
             margin: 1.5rem auto 0;
             box-shadow: 0 4px 15px rgba(18, 140, 126, 0.4);
             transition: var(--transition);
             border: 2px solid transparent;
+            min-width: 200px; /* Reserve space */
         }
         
-        .whatsapp-btn:hover, .whatsapp-btn:focus {
+        .whatsapp-btn:hover {
             background: var(--whatsapp-dark);
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(7, 94, 84, 0.5);
@@ -349,14 +389,15 @@
             font-weight: 900;
         }
         
-        /* Footer */
+        /* Footer with reserved space */
         footer {
             background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
             color: var(--text-light);
             text-align: center;
-            padding: 2rem;
+            padding: 2.5rem;
             margin-top: 3rem;
             border-top: 4px solid var(--accent-color);
+            min-height: 300px; /* Reserve space */
         }
         
         .footer-content {
@@ -364,17 +405,17 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+            gap: 2rem;
             text-align: right;
         }
         
         .footer-section h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            margin-bottom: 1.2rem;
             color: var(--accent-color);
             position: relative;
             display: inline-block;
-            font-weight: 900; /* زيادة سمك الخط */
+            font-weight: 900;
         }
         
         .footer-section h3::after {
@@ -389,14 +430,15 @@
         
         .footer-section p, .footer-section a {
             color: rgba(255, 255, 255, 0.95);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
             display: block;
             text-decoration: none;
             transition: var(--transition);
-            font-weight: 700; /* زيادة سمك الخط */
+            font-weight: 700;
+            font-size: 1rem;
         }
         
-        .footer-section a:hover, .footer-section a:focus {
+        .footer-section a:hover {
             color: var(--accent-color);
             padding-right: 5px;
             text-decoration: underline;
@@ -405,7 +447,7 @@
         .social-icons {
             display: flex;
             gap: 1rem;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
             justify-content: flex-end;
         }
         
@@ -413,8 +455,8 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 42px;
+            height: 42px;
             background: rgba(255, 255, 255, 0.15);
             border-radius: 50%;
             color: var(--white);
@@ -423,7 +465,7 @@
             font-size: 1.2rem;
         }
         
-        .social-icons a:hover, .social-icons a:focus {
+        .social-icons a:hover {
             background: var(--accent-color);
             transform: translateY(-3px);
             border-color: var(--white);
@@ -431,28 +473,28 @@
         }
         
         .copyright {
-            margin-top: 2rem;
+            margin-top: 2.5rem;
             padding-top: 1.5rem;
             border-top: 2px solid rgba(255, 255, 255, 0.3);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: rgba(255, 255, 255, 0.95);
-            font-weight: 700; /* زيادة سمك الخط */
+            font-weight: 700;
         }
         
         /* Back to Top Button */
         .back-to-top {
             position: fixed;
-            bottom: 20px;
-            left: 20px;
+            bottom: 25px;
+            left: 25px;
             background: var(--accent-color);
             color: var(--primary-color);
-            width: 50px;
-            height: 50px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             cursor: pointer;
             opacity: 0;
             visibility: hidden;
@@ -469,7 +511,7 @@
             visibility: visible;
         }
         
-        .back-to-top:hover, .back-to-top:focus {
+        .back-to-top:hover {
             background: var(--primary-color);
             transform: translateY(-3px);
             color: var(--accent-color);
@@ -483,82 +525,42 @@
             left: 0;
             background: var(--primary-color);
             color: white;
-            padding: 8px;
+            padding: 10px;
             z-index: 100;
             transition: top 0.3s;
             border: 2px solid var(--accent-color);
-            font-weight: 900; /* زيادة سمك الخط */
+            font-weight: 900;
         }
         
         .skip-link:focus {
             top: 0;
         }
         
-        /* Responsive Design */
-        @media (min-width: 768px) {
-            .company-name {
-                font-size: 2.5rem;
-            }
-            
-            .company-name-en {
-                font-size: 1.3rem;
-            }
-            
-            nav ul {
-                gap: 1.5rem;
-            }
-            
-            nav ul li a {
-                font-size: 1.1rem;
-            }
-            
-            .hero {
-                padding: 4rem 1rem;
-            }
-            
-            .hero h2 {
-                font-size: 2.2rem;
-            }
-            
-            .hero p {
-                font-size: 1.2rem;
-            }
-            
-            .section-title {
-                font-size: 2.2rem;
-            }
-            
-            .service-box h2 {
-                font-size: 1.7rem;
-            }
-            
-            .whatsapp-btn {
-                padding: 1rem 2rem;
-                font-size: 1.2rem;
-            }
-        }
-        
-        @media (min-width: 992px) {
-            .company-name {
-                font-size: 2.8rem;
-            }
-            
-            .company-name-en {
-                font-size: 1.5rem;
-            }
-            
-            .hero h2 {
-                font-size: 2.5rem;
-            }
-            
+        /* Responsive Design with CLS prevention */
+        @media (max-width: 768px) {
             .services-grid {
-                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-methods {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-card {
+                max-width: 100%;
+            }
+            
+            .back-to-top {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
             }
         }
     </style>
     
     <!-- Load non-critical CSS asynchronously -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@700;800;900&display=swap" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" media="print" onload="this.media='all'">
 </head>
 <body>
@@ -703,21 +705,25 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <!-- JavaScript -->
+    <!-- Optimized JavaScript -->
     <script>
-        // Update copyright year automatically
+        // Update copyright year
         document.getElementById('year').textContent = new Date().getFullYear();
         
-        // Back to Top Button
+        // Back to Top Button with requestAnimationFrame
         const backToTopBtn = document.getElementById('backToTop');
         
-        window.addEventListener('scroll', () => {
+        function toggleBackToTop() {
             if (window.pageYOffset > 300) {
                 backToTopBtn.classList.add('active');
             } else {
                 backToTopBtn.classList.remove('active');
             }
-        });
+            requestAnimationFrame(toggleBackToTop);
+        }
+        
+        // Start the animation frame loop
+        requestAnimationFrame(toggleBackToTop);
         
         backToTopBtn.addEventListener('click', () => {
             window.scrollTo({
@@ -726,37 +732,53 @@
             });
         });
         
-        // Smooth scrolling for anchor links
+        // Smooth scrolling with performance optimization
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 
-                const target = document.querySelector(this.getAttribute('href'));
+                const targetId = this.getAttribute('href');
+                const target = document.querySelector(targetId);
+                
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth'
-                    });
+                    // Use requestAnimationFrame for smooth scrolling
+                    const start = performance.now();
+                    const startPosition = window.pageYOffset;
+                    const targetPosition = target.getBoundingClientRect().top + startPosition;
+                    const duration = 800;
                     
-                    // Focus on the target for keyboard users
-                    if (target.hasAttribute('tabindex')) {
-                        target.focus();
+                    function scrollStep(timestamp) {
+                        const elapsed = timestamp - start;
+                        const progress = Math.min(elapsed / duration, 1);
+                        const easeInOut = progress < 0.5 
+                            ? 2 * progress * progress 
+                            : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+                        
+                        window.scrollTo(0, startPosition + (targetPosition - startPosition) * easeInOut);
+                        
+                        if (progress < 1) {
+                            requestAnimationFrame(scrollStep);
+                        } else if (target.hasAttribute('tabindex')) {
+                            target.focus();
+                        }
                     }
+                    
+                    requestAnimationFrame(scrollStep);
                 }
             });
         });
         
         // Focus management for skip link
         document.querySelector('.skip-link').addEventListener('click', function() {
-            document.getElementById('main-content').setAttribute('tabindex', '-1');
-            document.getElementById('main-content').focus();
+            const mainContent = document.getElementById('main-content');
+            mainContent.setAttribute('tabindex', '-1');
+            mainContent.focus();
         });
         
-        // Load non-critical resources
-        document.addEventListener('DOMContentLoaded', function() {
-            const loadFontAwesome = document.createElement('link');
-            loadFontAwesome.rel = 'stylesheet';
-            loadFontAwesome.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css';
-            document.head.appendChild(loadFontAwesome);
+        // Load non-critical resources after page load
+        window.addEventListener('load', function() {
+            // Font Awesome is already loaded asynchronously
+            // Additional non-critical resources can be loaded here
         });
     </script>
 </body>
