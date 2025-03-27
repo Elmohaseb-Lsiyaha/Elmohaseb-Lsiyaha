@@ -16,18 +16,20 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://elmohaseb-lsiyaha.netlify.app" />
     
-    <!-- Preload Critical Resources -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@700;800;900&display=swap" as="style">
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" as="style">
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     
-    <!-- Inline Critical CSS with CLS improvements -->
+    <!-- Inline Critical CSS -->
     <style>
         :root {
-            --primary-color: #006494; /* أزرق داكن قليلاً لمزيد من التباين */
+            --primary-color: #006494; /* أزرق داكن لتحسين التباين */
             --primary-light: #0582CA; /* أزرق متوسط */
-            --secondary-color: #F8FDFF; /* سماوي فاتح جداً للخلفية */
-            --accent-color: #FF9100; /* لون برتقالي ذهبي أكثر إشراقًا */
-            --text-dark: #0A0A0A; /* أسود داكن جداً مع تباين عالي */
+            --secondary-color: #FFFFFF; /* خلفية بيضاء نقية */
+            --accent-color: #FF9100; /* لون برتقالي ذهبي مع تباين عالي */
+            --text-dark: #121212; /* أسود داكن جداً مع تباين عالي */
+            --text-medium: #333333; /* للعناصر الثانوية */
             --text-light: #FFFFFF;
             --whatsapp-color: #128C7E;
             --whatsapp-dark: #075E54;
@@ -46,42 +48,34 @@
             box-sizing: border-box;
         }
         
-        /* Base Typography with CLS prevention */
+        /* تحسينات الطباعة الأساسية */
         body {
             font-family: 'Tajawal', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             color: var(--text-dark);
-            line-height: 1.7;
-            overflow-x: hidden;
+            line-height: 1.8; /* زيادة تباعد الأسطر */
             background-color: var(--secondary-color);
-            font-weight: 700;
-            text-rendering: optimizeLegibility;
-            -webkit-font-smoothing: antialiased;
+            font-weight: 700; /* سمك خط أساسي عالي */
+            -webkit-font-smoothing: antialiased; /* تحسين الحروف */
+            text-rendering: optimizeLegibility; /* تحسين القراءة */
         }
         
-        h1, h2, h3, h4 {
-            font-weight: 900;
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 900; /* عناوين بسمك كامل */
             line-height: 1.3;
+            color: var(--text-dark);
         }
         
-        p {
-            margin-bottom: 1rem;
-            font-weight: 700;
+        p, li, a, span {
+            font-weight: 700; /* سمك خط عالي للنصوص */
+            color: var(--text-dark);
         }
         
         a {
             text-decoration: none;
-            color: inherit;
-            font-weight: 700;
+            transition: var(--transition);
         }
         
-        /* Layout with CLS prevention */
-        img, svg, video, iframe {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        /* Header with reserved space */
+        /* Header Styles */
         header {
             background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
             color: var(--text-light);
@@ -91,7 +85,6 @@
             box-shadow: var(--shadow-md);
             z-index: 100;
             border-bottom: 4px solid var(--accent-color);
-            min-height: 180px; /* Reserve space to prevent CLS */
         }
         
         .header-content {
@@ -101,7 +94,7 @@
         }
         
         .company-name {
-            font-size: clamp(1.8rem, 5vw, 2.8rem); /* Fluid typography */
+            font-size: 2.2rem;
             font-weight: 900;
             margin-bottom: 0.5rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
@@ -110,18 +103,14 @@
         }
         
         .company-name-en {
-            font-size: clamp(1rem, 3vw, 1.5rem);
+            font-size: 1.2rem;
             font-weight: 800;
             display: block;
-            opacity: 0.95;
             color: var(--white);
+            opacity: 0.95;
         }
         
-        /* Navigation with reserved space */
-        nav {
-            min-height: 60px; /* Reserve space */
-        }
-        
+        /* Navigation */
         nav ul {
             list-style: none;
             display: flex;
@@ -133,29 +122,30 @@
         
         nav ul li a {
             color: var(--text-light);
-            font-size: clamp(0.9rem, 3vw, 1.1rem);
+            text-decoration: none;
+            font-size: 1rem;
             font-weight: 800;
-            padding: 0.6rem 1.2rem;
+            padding: 0.5rem 1rem;
             border-radius: 30px;
             transition: var(--transition);
             border: 2px solid rgba(255, 255, 255, 0.4);
             background-color: rgba(255, 255, 255, 0.15);
         }
         
-        nav ul li a:hover {
+        nav ul li a:hover, nav ul li a:focus {
             color: var(--accent-color);
             border-color: var(--accent-color);
             background-color: rgba(255, 255, 255, 0.25);
         }
         
-        /* Main Content with reserved space */
+        /* Main Content */
         main {
             max-width: 1200px;
             margin: 2rem auto;
             padding: 0 1rem;
         }
         
-        /* Hero Section with CLS prevention */
+        /* Hero Section */
         .hero {
             background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
             color: var(--text-light);
@@ -167,38 +157,34 @@
             overflow: hidden;
             box-shadow: var(--shadow-md);
             border: 3px solid var(--accent-color);
-            min-height: 300px; /* Reserve space */
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
         
         .hero-content {
             position: relative;
             z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
         }
         
         .hero h2 {
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-size: 1.8rem;
             margin-bottom: 1.5rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
             color: var(--white);
             font-weight: 900;
+            line-height: 1.3;
         }
         
         .hero p {
-            font-size: clamp(1rem, 3vw, 1.2rem);
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
             color: rgba(255, 255, 255, 0.95);
             font-weight: 700;
             line-height: 1.8;
-            margin-bottom: 2rem;
         }
         
-        /* Services Section with grid reservation */
+        /* Services Section */
         .section-title {
-            font-size: clamp(1.8rem, 5vw, 2.2rem);
+            font-size: 2rem;
             text-align: center;
             margin-bottom: 2rem;
             color: var(--primary-color);
@@ -234,7 +220,6 @@
             transition: var(--transition);
             position: relative;
             overflow: hidden;
-            min-height: 450px; /* Reserve space */
         }
         
         .service-box::before {
@@ -287,7 +272,7 @@
             font-weight: 900;
         }
         
-        /* Contact Section with reserved space */
+        /* Contact Section */
         .contact-section {
             background: var(--white);
             border-radius: var(--border-radius);
@@ -296,12 +281,11 @@
             box-shadow: var(--shadow-sm);
             text-align: center;
             border: 2px solid var(--primary-color);
-            min-height: 400px; /* Reserve space */
         }
         
         .contact-section h2 {
             color: var(--primary-color);
-            font-size: clamp(1.8rem, 5vw, 2.2rem);
+            font-size: 1.8rem;
             margin-bottom: 1.5rem;
             font-weight: 900;
         }
@@ -322,7 +306,6 @@
             max-width: 280px;
             transition: var(--transition);
             border: 2px solid var(--primary-light);
-            min-height: 180px; /* Reserve space */
         }
         
         .contact-card:hover {
@@ -356,7 +339,7 @@
             text-decoration: underline;
         }
         
-        /* WhatsApp Button with reserved space */
+        /* WhatsApp Button */
         .whatsapp-btn {
             display: inline-flex;
             align-items: center;
@@ -365,17 +348,17 @@
             color: var(--white);
             padding: 1rem 2rem;
             border-radius: 50px;
-            font-size: clamp(1rem, 3vw, 1.2rem);
+            font-size: 1.1rem;
             font-weight: 900;
             text-decoration: none;
             margin: 1.5rem auto 0;
             box-shadow: 0 4px 15px rgba(18, 140, 126, 0.4);
             transition: var(--transition);
             border: 2px solid transparent;
-            min-width: 200px; /* Reserve space */
+            min-width: 200px;
         }
         
-        .whatsapp-btn:hover {
+        .whatsapp-btn:hover, .whatsapp-btn:focus {
             background: var(--whatsapp-dark);
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(7, 94, 84, 0.5);
@@ -389,7 +372,7 @@
             font-weight: 900;
         }
         
-        /* Footer with reserved space */
+        /* Footer */
         footer {
             background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
             color: var(--text-light);
@@ -397,7 +380,6 @@
             padding: 2.5rem;
             margin-top: 3rem;
             border-top: 4px solid var(--accent-color);
-            min-height: 300px; /* Reserve space */
         }
         
         .footer-content {
@@ -438,7 +420,7 @@
             font-size: 1rem;
         }
         
-        .footer-section a:hover {
+        .footer-section a:hover, .footer-section a:focus {
             color: var(--accent-color);
             padding-right: 5px;
             text-decoration: underline;
@@ -465,7 +447,7 @@
             font-size: 1.2rem;
         }
         
-        .social-icons a:hover {
+        .social-icons a:hover, .social-icons a:focus {
             background: var(--accent-color);
             transform: translateY(-3px);
             border-color: var(--white);
@@ -511,7 +493,7 @@
             visibility: visible;
         }
         
-        .back-to-top:hover {
+        .back-to-top:hover, .back-to-top:focus {
             background: var(--primary-color);
             transform: translateY(-3px);
             color: var(--accent-color);
@@ -536,7 +518,7 @@
             top: 0;
         }
         
-        /* Responsive Design with CLS prevention */
+        /* Responsive Design */
         @media (max-width: 768px) {
             .services-grid {
                 grid-template-columns: 1fr;
@@ -705,25 +687,21 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <!-- Optimized JavaScript -->
+    <!-- JavaScript -->
     <script>
-        // Update copyright year
+        // Update copyright year automatically
         document.getElementById('year').textContent = new Date().getFullYear();
         
-        // Back to Top Button with requestAnimationFrame
+        // Back to Top Button
         const backToTopBtn = document.getElementById('backToTop');
         
-        function toggleBackToTop() {
+        window.addEventListener('scroll', () => {
             if (window.pageYOffset > 300) {
                 backToTopBtn.classList.add('active');
             } else {
                 backToTopBtn.classList.remove('active');
             }
-            requestAnimationFrame(toggleBackToTop);
-        }
-        
-        // Start the animation frame loop
-        requestAnimationFrame(toggleBackToTop);
+        });
         
         backToTopBtn.addEventListener('click', () => {
             window.scrollTo({
@@ -732,53 +710,37 @@
             });
         });
         
-        // Smooth scrolling with performance optimization
+        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 
-                const targetId = this.getAttribute('href');
-                const target = document.querySelector(targetId);
-                
+                const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    // Use requestAnimationFrame for smooth scrolling
-                    const start = performance.now();
-                    const startPosition = window.pageYOffset;
-                    const targetPosition = target.getBoundingClientRect().top + startPosition;
-                    const duration = 800;
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
                     
-                    function scrollStep(timestamp) {
-                        const elapsed = timestamp - start;
-                        const progress = Math.min(elapsed / duration, 1);
-                        const easeInOut = progress < 0.5 
-                            ? 2 * progress * progress 
-                            : 1 - Math.pow(-2 * progress + 2, 2) / 2;
-                        
-                        window.scrollTo(0, startPosition + (targetPosition - startPosition) * easeInOut);
-                        
-                        if (progress < 1) {
-                            requestAnimationFrame(scrollStep);
-                        } else if (target.hasAttribute('tabindex')) {
-                            target.focus();
-                        }
+                    // Focus on the target for keyboard users
+                    if (target.hasAttribute('tabindex')) {
+                        target.focus();
                     }
-                    
-                    requestAnimationFrame(scrollStep);
                 }
             });
         });
         
         // Focus management for skip link
         document.querySelector('.skip-link').addEventListener('click', function() {
-            const mainContent = document.getElementById('main-content');
-            mainContent.setAttribute('tabindex', '-1');
-            mainContent.focus();
+            document.getElementById('main-content').setAttribute('tabindex', '-1');
+            document.getElementById('main-content').focus();
         });
         
-        // Load non-critical resources after page load
-        window.addEventListener('load', function() {
-            // Font Awesome is already loaded asynchronously
-            // Additional non-critical resources can be loaded here
+        // Load non-critical resources
+        document.addEventListener('DOMContentLoaded', function() {
+            const loadFontAwesome = document.createElement('link');
+            loadFontAwesome.rel = 'stylesheet';
+            loadFontAwesome.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css';
+            document.head.appendChild(loadFontAwesome);
         });
     </script>
 </body>
