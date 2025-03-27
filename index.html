@@ -17,6 +17,11 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://elmohaseb-lsiyaha.netlify.app" />
     
+    <!-- Preload important resources -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" as="style">
+    <link rel="preload" href="https://images.unsplash.com/photo-1518639192441-8fce0a366e2e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" as="image">
+    
     <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,12 +30,12 @@
     
     <style>
         :root {
-            --primary-color: #003366;
-            --secondary-color: #004080;
-            --accent-color: #d4af37;
+            --primary-color: #002b5c;
+            --secondary-color: #003366;
+            --accent-color: #c19a0b;
             --light-bg: #f5f9ff;
-            --whatsapp-color: #25d366;
-            --text-color: #333;
+            --whatsapp-color: #128C7E;
+            --text-color: #333333;
             --white: #ffffff;
             --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s ease;
@@ -72,6 +77,7 @@
             font-weight: 900;
             margin-bottom: 0.5rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            color: var(--white);
         }
         
         .company-name-en {
@@ -80,6 +86,7 @@
             display: block;
             opacity: 0.9;
             letter-spacing: 1px;
+            color: var(--white);
         }
         
         /* Navigation */
@@ -117,8 +124,10 @@
             transition: var(--transition);
         }
         
-        nav ul li a:hover {
+        nav ul li a:hover, nav ul li a:focus {
             color: var(--accent-color);
+            outline: 2px solid var(--accent-color);
+            outline-offset: 3px;
         }
         
         nav ul li a:hover::after {
@@ -136,7 +145,7 @@
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 64, 128, 0.8)), url('https://images.unsplash.com/photo-1518639192441-8fce0a366e2e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background: linear-gradient(rgba(0, 43, 92, 0.9), rgba(0, 51, 102, 0.9)), url('https://images.unsplash.com/photo-1518639192441-8fce0a366e2e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
             color: var(--white);
@@ -152,15 +161,24 @@
             font-size: 2.5rem;
             margin-bottom: 1.5rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            color: var(--white);
         }
         
         .hero p {
             font-size: 1.2rem;
             max-width: 800px;
             margin: 0 auto 2rem;
+            color: var(--white);
         }
         
         /* Services Section */
+        .section-title {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+        
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -287,13 +305,16 @@
             text-decoration: none;
             margin: 2rem auto 0;
             transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            box-shadow: 0 4px 15px rgba(18, 140, 126, 0.3);
+            border: 2px solid transparent;
         }
         
-        .whatsapp-btn:hover {
-            background: #128C7E;
+        .whatsapp-btn:hover, .whatsapp-btn:focus {
+            background: #075E54;
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 6px 20px rgba(18, 140, 126, 0.4);
+            outline: none;
+            border-color: var(--white);
         }
         
         .whatsapp-btn i {
@@ -326,16 +347,17 @@
         }
         
         .footer-section p, .footer-section a {
-            color: #ddd;
+            color: #f0f0f0;
             margin-bottom: 0.5rem;
             display: block;
             text-decoration: none;
             transition: var(--transition);
         }
         
-        .footer-section a:hover {
+        .footer-section a:hover, .footer-section a:focus {
             color: var(--accent-color);
             padding-right: 5px;
+            outline: none;
         }
         
         .social-icons {
@@ -356,15 +378,17 @@
             transition: var(--transition);
         }
         
-        .social-icons a:hover {
+        .social-icons a:hover, .social-icons a:focus {
             background: var(--accent-color);
             transform: translateY(-3px);
+            outline: none;
         }
         
         .copyright {
             margin-top: 2rem;
             padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--white);
         }
         
         /* Back to Top Button */
@@ -387,6 +411,7 @@
             transition: var(--transition);
             z-index: 99;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            border: none;
         }
         
         .back-to-top.active {
@@ -394,9 +419,26 @@
             visibility: visible;
         }
         
-        .back-to-top:hover {
+        .back-to-top:hover, .back-to-top:focus {
             background: var(--primary-color);
             transform: translateY(-3px);
+            outline: none;
+        }
+        
+        /* Skip to Content Link */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary-color);
+            color: white;
+            padding: 8px;
+            z-index: 100;
+            transition: top 0.3s;
+        }
+        
+        .skip-link:focus {
+            top: 0;
         }
         
         /* Responsive Design */
@@ -475,131 +517,133 @@
     </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">تخطي إلى المحتوى الرئيسي</a>
+    
     <header>
         <div class="header-content">
             <h1 class="company-name fade-in">المحاسب للسياحة</h1>
             <span class="company-name-en fade-in delay-1">Elmohaseb Lsiyaha</span>
-            <nav>
+            <nav aria-label="القائمة الرئيسية">
                 <ul>
-                    <li><a href="#services" class="fade-in delay-1">الخدمات</a></li>
-                    <li><a href="#home" class="fade-in delay-1">الرئيسية</a></li>
-                    <li><a href="#about" class="fade-in delay-2">من نحن</a></li>
-                    <li><a href="#contact" class="fade-in delay-2">اتصل بنا</a></li>
+                    <li><a href="#services" class="fade-in delay-1" aria-label="الانتقال إلى قسم الخدمات">الخدمات</a></li>
+                    <li><a href="#home" class="fade-in delay-1" aria-label="الانتقال إلى الصفحة الرئيسية">الرئيسية</a></li>
+                    <li><a href="#about" class="fade-in delay-2" aria-label="الانتقال إلى قسم من نحن">من نحن</a></li>
+                    <li><a href="#contact" class="fade-in delay-2" aria-label="الانتقال إلى قسم اتصل بنا">اتصل بنا</a></li>
                 </ul>
             </nav>
         </div>
     </header>
     
-    <main>
-        <section id="home" class="hero fade-in">
-            <h2>رحلاتك المميزة تبدأ معنا</h2>
+    <main id="main-content">
+        <section id="home" class="hero fade-in" aria-labelledby="hero-heading">
+            <h2 id="hero-heading">رحلاتك المميزة تبدأ معنا</h2>
             <p>نقدم أفضل خدمات الحج والعمرة وتأشيرات السعودية بأسعار تنافسية وجودة عالية، مع فريق محترف لضمان رحلتك المثالية</p>
-            <a href="https://wa.me/message/FIW5CFX2HH2HF1" class="whatsapp-btn fade-in delay-2" target="_blank">
+            <a href="https://wa.me/message/FIW5CFX2HH2HF1" class="whatsapp-btn fade-in delay-2" target="_blank" aria-label="تواصل معنا عبر واتساب">
                 <i class="fab fa-whatsapp"></i> احجز رحلتك الآن
             </a>
         </section>
         
-        <section id="services">
-            <h2 class="section-title fade-in">خدماتنا المتميزة</h2>
+        <section id="services" aria-labelledby="services-heading">
+            <h2 id="services-heading" class="section-title fade-in">خدماتنا المتميزة</h2>
             <div class="services-grid">
-                <div class="service-box fade-in delay-1">
-                    <h2>برامج الحج والعمرة</h2>
+                <div class="service-box fade-in delay-1" aria-labelledby="hajj-heading">
+                    <h2 id="hajj-heading">برامج الحج والعمرة</h2>
                     <ul class="service-list">
-                        <li><i class="fas fa-kaaba"></i> تنظيم برامج الحج والعمرة الكاملة</li>
-                        <li><i class="fas fa-map-marked-alt"></i> رحلات سياحية داخل مكة والمدينة</li>
-                        <li><i class="fas fa-hotel"></i> حجوزات الفنادق الفاخرة بالقرب من الحرم</li>
-                        <li><i class="fas fa-utensils"></i> وجبات طعام متنوعة وفاخرة</li>
-                        <li><i class="fas fa-bus"></i> وسائل نقل حديثة ومريحة</li>
-                        <li><i class="fas fa-user-tie"></i> مرشدون متخصصون</li>
+                        <li><i class="fas fa-kaaba" aria-hidden="true"></i> تنظيم برامج الحج والعمرة الكاملة</li>
+                        <li><i class="fas fa-map-marked-alt" aria-hidden="true"></i> رحلات سياحية داخل مكة والمدينة</li>
+                        <li><i class="fas fa-hotel" aria-hidden="true"></i> حجوزات الفنادق الفاخرة بالقرب من الحرم</li>
+                        <li><i class="fas fa-utensils" aria-hidden="true"></i> وجبات طعام متنوعة وفاخرة</li>
+                        <li><i class="fas fa-bus" aria-hidden="true"></i> وسائل نقل حديثة ومريحة</li>
+                        <li><i class="fas fa-user-tie" aria-hidden="true"></i> مرشدون متخصصون</li>
                     </ul>
                 </div>
 
-                <div class="service-box fade-in delay-2">
-                    <h2>تأشيرات السعودية</h2>
+                <div class="service-box fade-in delay-2" aria-labelledby="visa-heading">
+                    <h2 id="visa-heading">تأشيرات السعودية</h2>
                     <ul class="service-list">
-                        <li><i class="fas fa-calendar-check"></i> حجز موعد تأشيرة VFS</li>
-                        <li><i class="fas fa-file-alt"></i> طلب إنجاز</li>
-                        <li><i class="fas fa-users"></i> زيارات عائلية</li>
-                        <li><i class="fas fa-briefcase"></i> زيارة أعمال</li>
-                        <li><i class="fas fa-umbrella-beach"></i> تأشيرة سياحة</li>
-                        <li><i class="fas fa-user-plus"></i> طلبات الاستقدام</li>
-                        <li><i class="fas fa-qrcode"></i> عمرة - باركود</li>
+                        <li><i class="fas fa-calendar-check" aria-hidden="true"></i> حجز موعد تأشيرة VFS</li>
+                        <li><i class="fas fa-file-alt" aria-hidden="true"></i> طلب إنجاز</li>
+                        <li><i class="fas fa-users" aria-hidden="true"></i> زيارات عائلية</li>
+                        <li><i class="fas fa-briefcase" aria-hidden="true"></i> زيارة أعمال</li>
+                        <li><i class="fas fa-umbrella-beach" aria-hidden="true"></i> تأشيرة سياحة</li>
+                        <li><i class="fas fa-user-plus" aria-hidden="true"></i> طلبات الاستقدام</li>
+                        <li><i class="fas fa-qrcode" aria-hidden="true"></i> عمرة - باركود</li>
                     </ul>
                 </div>
                 
-                <div class="service-box fade-in delay-3">
-                    <h2>خدمات سياحية أخرى</h2>
+                <div class="service-box fade-in delay-3" aria-labelledby="other-services-heading">
+                    <h2 id="other-services-heading">خدمات سياحية أخرى</h2>
                     <ul class="service-list">
-                        <li><i class="fas fa-plane"></i> حجز تذاكر الطيران</li>
-                        <li><i class="fas fa-passport"></i> تجديد الجوازات</li>
-                        <li><i class="fas fa-car"></i> تأجير سيارات</li>
-                        <li><i class="fas fa-medal"></i> تأمين سفر</li>
-                        <li><i class="fas fa-graduation-cap"></i> تأشيرات طلابية</li>
-                        <li><i class="fas fa-hand-holding-medical"></i> تأشيرات علاج</li>
+                        <li><i class="fas fa-plane" aria-hidden="true"></i> حجز تذاكر الطيران</li>
+                        <li><i class="fas fa-passport" aria-hidden="true"></i> تجديد الجوازات</li>
+                        <li><i class="fas fa-car" aria-hidden="true"></i> تأجير سيارات</li>
+                        <li><i class="fas fa-medal" aria-hidden="true"></i> تأمين سفر</li>
+                        <li><i class="fas fa-graduation-cap" aria-hidden="true"></i> تأشيرات طلابية</li>
+                        <li><i class="fas fa-hand-holding-medical" aria-hidden="true"></i> تأشيرات علاج</li>
                     </ul>
                 </div>
             </div>
         </section>
         
-        <section id="about" class="fade-in delay-2">
+        <section id="about" class="fade-in delay-2" aria-labelledby="about-heading">
             <div class="service-box">
-                <h2>من نحن</h2>
+                <h2 id="about-heading">من نحن</h2>
                 <p>شركة المحاسب للسياحة هي وكالة سفر معتمدة متخصصة في تقديم خدمات الحج والعمرة وتأشيرات المملكة العربية السعودية. نحن نتميز بخبرة طويلة في مجال السياحة الدينية والسفر، مع فريق عمل محترف يضمن لكم رحلة مميزة بكل سهولة ويسر.</p>
                 <p>نسعى دائماً لتقديم أفضل الخدمات بأسعار تنافسية، مع الحرص على توفير كل ما يحتاجه المسافر لرحلة مريحة وآمنة. نقدم الاستشارات المجانية ونساعدكم في اختيار البرنامج المناسب لاحتياجاتكم.</p>
             </div>
         </section>
         
-        <section id="contact" class="contact-section fade-in delay-3">
-            <h2>تواصل معنا</h2>
+        <section id="contact" class="contact-section fade-in delay-3" aria-labelledby="contact-heading">
+            <h2 id="contact-heading">تواصل معنا</h2>
             <p>نحن هنا لمساعدتك في كل استفساراتك واحتياجاتك المتعلقة بالسفر والسياحة</p>
             
             <div class="contact-methods">
-                <div class="contact-card">
-                    <i class="fas fa-phone-alt"></i>
+                <div class="contact-card" aria-label="معلومات الاتصال الهاتفي">
+                    <i class="fas fa-phone-alt" aria-hidden="true"></i>
                     <h3>اتصل بنا</h3>
-                    <p>+201099667530</p>
+                    <p><a href="tel:+201099667530" aria-label="اتصل بنا على الرقم +201099667530">+201099667530</a></p>
                 </div>
                 
-                <div class="contact-card">
-                    <i class="fas fa-envelope"></i>
+                <div class="contact-card" aria-label="معلومات البريد الإلكتروني">
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
                     <h3>البريد الإلكتروني</h3>
-                    <p>angel.science0@gmail.com</p>
+                    <p><a href="mailto:angel.science0@gmail.com" aria-label="أرسل بريد إلكتروني إلى angel.science0@gmail.com">angel.science0@gmail.com</a></p>
                 </div>
             </div>
             
-            <a href="https://wa.me/message/FIW5CFX2HH2HF1" class="whatsapp-btn" target="_blank">
+            <a href="https://wa.me/message/FIW5CFX2HH2HF1" class="whatsapp-btn" target="_blank" aria-label="تواصل معنا عبر واتساب">
                 <i class="fab fa-whatsapp"></i> تواصل عبر واتساب
             </a>
         </section>
     </main>
     
-    <footer>
+    <footer aria-label="تذييل الصفحة">
         <div class="footer-content">
-            <div class="footer-section">
-                <h3>المحاسب للسياحة</h3>
+            <div class="footer-section" aria-labelledby="footer-about-heading">
+                <h3 id="footer-about-heading">المحاسب للسياحة</h3>
                 <p>شركة متخصصة في خدمات الحج والعمرة وتأشيرات السعودية بأسعار مميزة وجودة عالية.</p>
                 <div class="social-icons">
-                    <a href="https://www.facebook.com/vc.tasheer.eg" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.facebook.com/vc.tasheer.eg" target="_blank" aria-label="صفحتنا على فيسبوك"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" target="_blank" aria-label="صفحتنا على تويتر"><i class="fab fa-twitter"></i></a>
+                    <a href="#" target="_blank" aria-label="صفحتنا على إنستجرام"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank" aria-label="قناتنا على يوتيوب"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
             
-            <div class="footer-section">
-                <h3>روابط سريعة</h3>
-                <a href="#home">الرئيسية</a>
-                <a href="#services">خدماتنا</a>
-                <a href="#about">من نحن</a>
-                <a href="#contact">اتصل بنا</a>
+            <div class="footer-section" aria-labelledby="footer-links-heading">
+                <h3 id="footer-links-heading">روابط سريعة</h3>
+                <a href="#home" aria-label="الانتقال إلى الصفحة الرئيسية">الرئيسية</a>
+                <a href="#services" aria-label="الانتقال إلى قسم الخدمات">خدماتنا</a>
+                <a href="#about" aria-label="الانتقال إلى قسم من نحن">من نحن</a>
+                <a href="#contact" aria-label="الانتقال إلى قسم اتصل بنا">اتصل بنا</a>
             </div>
             
-            <div class="footer-section">
-                <h3>خدماتنا</h3>
-                <a href="#">الحج والعمرة</a>
-                <a href="#">تأشيرات السعودية</a>
-                <a href="#">حجز الطيران</a>
-                <a href="#">حجز الفنادق</a>
+            <div class="footer-section" aria-labelledby="footer-services-heading">
+                <h3 id="footer-services-heading">خدماتنا</h3>
+                <a href="#services" aria-label="خدمات الحج والعمرة">الحج والعمرة</a>
+                <a href="#services" aria-label="خدمات تأشيرات السعودية">تأشيرات السعودية</a>
+                <a href="#services" aria-label="خدمات حجز الطيران">حجز الطيران</a>
+                <a href="#services" aria-label="خدمات حجز الفنادق">حجز الفنادق</a>
             </div>
         </div>
         
@@ -608,9 +652,9 @@
         </div>
     </footer>
     
-    <div class="back-to-top" id="backToTop">
+    <button class="back-to-top" id="backToTop" aria-label="العودة إلى أعلى الصفحة">
         <i class="fas fa-arrow-up"></i>
-    </div>
+    </button>
 
     <script>
         // Update copyright year automatically
@@ -639,9 +683,17 @@
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Focus on the target for keyboard users
+                    if (target.hasAttribute('tabindex')) {
+                        target.focus();
+                    }
+                }
             });
         });
         
@@ -662,6 +714,12 @@
         
         window.addEventListener('scroll', fadeInOnScroll);
         window.addEventListener('load', fadeInOnScroll);
+        
+        // Focus management for skip link
+        document.querySelector('.skip-link').addEventListener('click', function() {
+            document.getElementById('main-content').setAttribute('tabindex', '-1');
+            document.getElementById('main-content').focus();
+        });
     </script>
 </body>
 </html>
